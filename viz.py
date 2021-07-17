@@ -1,3 +1,5 @@
+import numpy as np
+
 import matplotlib
 matplotlib.rcParams['font.sans-serif'] = "Gill Sans"
 import matplotlib.pyplot as plt
