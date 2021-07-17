@@ -175,6 +175,10 @@ def plot_histogram(X_,
     if kde:
         ax_tmp = ax.twinx()
         sns.kdeplot(data=X_, ax=ax_tmp, color="k", ls="--")
+        ax_tmp.set_ylabel("Density",
+                          color='darkred',
+                          fontsize=15,
+                          fontweight="bold")
 
     return ax.hist(X_, bins=bins, alpha=0.6,  **kwargs)
 
