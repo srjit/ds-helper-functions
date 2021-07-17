@@ -7,6 +7,7 @@ import matplotlib.ticker as tkr
 label_size = 8
 matplotlib.rcParams['xtick.labelsize'] = label_size
 
+import seaborn as sns
 
 __author__ = "Sreejith Sreekumar"
 __email__ = "ssreejith@protonmail.com"
@@ -144,6 +145,7 @@ def plot_histogram(X_,
                    xlabel="",
                    ylabel="",
                    set_x_format=True,
+                   kde=False,
                    **kwargs):
 
     '''
@@ -170,6 +172,9 @@ def plot_histogram(X_,
     if set_x_format:
         ax.xaxis.set_major_formatter(y_format)
 
+    if kde:
+        ax_tmp = ax.twinx()
+        sns.kdeplot(data=X_, ax=ax_tmp, color="k", ls="--")
 
     return ax.hist(X_, bins=bins, alpha=0.6,  **kwargs)
 
@@ -210,6 +215,7 @@ def plot_pdf_and_cdf(X_,
     ax.grid(which='minor', linestyle=':', linewidth='0.5', color='gray')
 
     ax.plot(bins_count[1:], pdf, color="red", label="PDF", **kwargs)
+    ax.legend()
     return ax.plot(bins_count[1:], cdf, label="CDF", **kwargs)
 
 
